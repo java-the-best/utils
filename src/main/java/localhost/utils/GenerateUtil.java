@@ -1,5 +1,6 @@
 package localhost.utils;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 public class GenerateUtil {
@@ -30,5 +31,9 @@ public class GenerateUtil {
 
   public static double getRandomDouble() {
     return new Random().nextDouble();
+  }
+
+  public static BigDecimal getRandomBigDecimal() {
+    return new BigDecimal(getRandomDouble());
   }
 }
