@@ -1,5 +1,6 @@
 package localhost.utils;
 
+import static localhost.utils.GenerateUtil.getRandomBigDecimal;
 import static localhost.utils.GenerateUtil.getRandomBoolean;
 import static localhost.utils.GenerateUtil.getRandomByte;
 import static localhost.utils.GenerateUtil.getRandomDouble;
@@ -51,6 +52,8 @@ public class FillingFieldsObjectUtil {
       } else if (Objects.equals(fieldTypeName, "java.lang.Double")
           || Objects.equals(fieldTypeName, "double")) {
         fieldNewValue = getRandomDouble();
+      } else if (Objects.equals(fieldTypeName, "java.math.BigDecimal")) {
+        fieldNewValue = getRandomBigDecimal();
       } else if (Objects.equals(fieldTypeName, "java.lang.String")) {
         fieldNewValue = field.getName();
       } else {
