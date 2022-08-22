@@ -18,6 +18,10 @@ import java.util.Objects;
 public class FillingFieldsObjectUtil {
 
   public static <T> T fillingFields(T object) {
+    return fillingFields(object, null);
+  }
+
+  public static <T> T fillingFields(T object, String stringValue) {
     Class<?> objectClass = object.getClass();
     List<Field> fieldList = new ArrayList<>();
     fieldList.addAll(Arrays.asList(objectClass.getDeclaredFields()));
@@ -55,7 +59,11 @@ public class FillingFieldsObjectUtil {
       } else if (Objects.equals(fieldTypeName, "java.math.BigDecimal")) {
         fieldNewValue = getRandomBigDecimal();
       } else if (Objects.equals(fieldTypeName, "java.lang.String")) {
-        fieldNewValue = field.getName();
+        if (stringValue == null) {
+          fieldNewValue = field.getName();
+        } else {
+          fieldNewValue = stringValue;
+        }
       } else {
         try {
           fieldNewValue = fieldType.getDeclaredConstructor().newInstance();
